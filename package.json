@@ -1,0 +1,57 @@
+{
+  "name": "kafkadog",
+  "version": "1.0.0",
+  "author": "alisherafati",
+  "description": "Learn Apache Kafka through hands-on scenarios with a complete, production-like microservices demo",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend/apps/*",
+    "backend/libs/*"
+  ],
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "build": "pnpm run --recursive build",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "kafka:up": "docker compose -f docker-compose.dev.yml up -d",
+    "kafka:down": "docker compose -f docker-compose.dev.yml down",
+    "kafka:logs": "docker compose -f docker-compose.dev.yml logs -f",
+    "seed": "tsx scripts/seed-orders.ts",
+    "replay": "tsx scripts/replay-orders.ts",
+    "topics:create": "tsx scripts/create-topics.ts",
+    "reset": "docker compose down -v && docker compose up --build",
+    "clean": "pnpm run --recursive clean && rm -rf node_modules",
+    "lint": "pnpm run --recursive lint",
+    "format": "prettier --write .",
+    "type-check": "pnpm run --recursive type-check",
+    "install:all": "pnpm install && pnpm run --recursive install",
+    "build:all": "pnpm run build",
+    "start:demo": "pnpm run docker:up",
+    "dev:contracts": "pnpm --filter @kafkadog/contracts dev",
+    "dev:api-gateway": "pnpm --filter @kafkadog/api-gateway dev",
+    "dev:order-saga": "pnpm --filter @kafkadog/order-saga dev",
+    "dev:payment-service": "pnpm --filter @kafkadog/payment-service dev",
+    "dev:inventory-service": "pnpm --filter @kafkadog/inventory-service dev",
+    "dev:notification-service": "pnpm --filter @kafkadog/notification-service dev",
+    "dev:analytics-service": "pnpm --filter @kafkadog/analytics-service dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "build:contracts": "pnpm --filter @kafkadog/contracts build",
+    "type-check:contracts": "pnpm --filter @kafkadog/contracts type-check"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@10.15.0"
+}

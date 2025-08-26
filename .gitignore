@@ -1,0 +1,118 @@
+# Dependencies (covers all levels in monorepo)
+**/node_modules/
+**/jspm_packages/
+**/bower_components/
+
+# Package manager files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Environment variables (covers all levels in monorepo)
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# Build outputs (covers all levels in monorepo)
+**/dist/
+**/build/
+**/.next/
+**/out/
+**/.nuxt/
+**/.cache/
+**/.parcel-cache/
+**/public/
+*.tgz
+*.tar.gz
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing and coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Cache directories
+.npm/
+.eslintcache
+.stylelintcache
+.fusebox/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.serverless/
+.dynamodb/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.tern-port
+.vscode-test
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+
+# Docker volumes and data
+kafka_data_dev/
+postgres_data/
+kafka-logs/
+zookeeper-data/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Lock files (keep package-lock.json and yarn.lock)
+# package-lock.json
+# yarn.lock
+
+# Project-specific files
+.service-pids
+start-all.sh
+stop-all.sh
+
+# # Docker compose files (development overrides)
+# docker-compose.dev.yml
+# docker-compose.override.yml
+# # yarn.lock

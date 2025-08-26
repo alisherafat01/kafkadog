@@ -1,0 +1,23 @@
+{
+  "name": "@kafkadog/kafka",
+  "version": "1.0.0",
+  "description": "Kafka utilities and helpers for kafkadog",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "uuid": "^9.0.0",
+    "@kafkadog/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.0",
+    "typescript": "^5.0.0"
+  }
+}
+

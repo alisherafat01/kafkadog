@@ -1,0 +1,30 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { KafkaConsumer } from '@kafkadog/kafka';
+
+@Module({
+  imports: [ConfigModule],
+  providers: [
+    {
+      provide: KafkaConsumer,
+      useFactory: async (configService: ConfigService) => {
+        const consumer = new KafkaConsumer({
+          brokers: configService.get<string>('KAFKA_BROKERS')?.split(',') || ['localhost:9092'],
+          clientId: configService.get<string>('KAFKA_CLIENT_ID') || 'notification-service',
+          retryMaxAttempts: configService.get<number>('KAFKA_RETRY_MAX_ATTEMPTS') || 5,
+          retryBaseDelayMs: configService.get<number>('KAFKA_RETRY_BASE_DELAY_MS') || 500,
+        }, {
+          groupId: 'notification-service-group',
+          topics: ['orders.outcome.v1']
+        });
+
+        await consumer.connect();
+        return consumer;
+      },
+      inject: [ConfigService],
+    },
+  ],
+  exports: [KafkaConsumer],
+})
+export class KafkaModule {}
+

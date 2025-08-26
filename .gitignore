@@ -109,8 +109,8 @@ zookeeper-data/
 
 # Project-specific files
 .service-pids
-start-all.sh
-stop-all.sh
+# start-all.sh
+# stop-all.sh
 
 # # Docker compose files (development overrides)
 # docker-compose.dev.yml
